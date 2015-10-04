@@ -1,4 +1,3 @@
-package homework;
 
 import java.util.Queue;
 import java.util.ArrayList;
@@ -9,13 +8,13 @@ public class properMerging {
 	public static void main(String[] args) {
 		
 		
-		int [] p1 = {0, 1, 2, 3, 5, 4, 6};
-		int [] q1 = {0, 3, 2, 1, 6, 4, 5};
+		int [] p1 = {0, 5, 2, 3, 1, 4, 6};
+		int [] q1 = {0, 3, 2, 1, 6, 5, 4};
 		printInteger(p1, q1); 
 		System.out.println(properMerging(p1, q1));
 		
-		int [] p2 = {0, 1, 2, 3}; 
-		int [] q2 = {0, 3, 2, 1}; 
+		int [] p2 = {0, 1, 2, 3, 4}; 
+		int [] q2 = {0, 4, 2, 3, 1}; 
 		printInteger(p2, q2);
 		System.out.println(properMerging(p2, q2));
 		
@@ -28,12 +27,18 @@ public class properMerging {
 		int [] q4 = {0, 3, 5, 2, 4, 1}; 
 		printInteger(p4, q4); 
 		System.out.println(properMerging(p4, q4));
+		
+		int [] p5 = {0, 3, 2, 6, 4, 5, 1, 7}; 
+		int [] q5 = {0, 2, 4, 1, 5, 7, 3, 6}; 
+		printInteger(p5, q5); 
+		System.out.println(properMerging(p5, q5));
 	}
 		
 	public static Queue properMerging (int[] p, int q[]){
 		
 		
-		int [] pHelper = new int[q.length]; 
+		int [] pHelper = new int[p.length]; 
+		int [] qHelper = new int[q.length]; 
 		
 		Queue<Integer> pQueue = new LinkedList<Integer>(); 
 		Queue<Integer> qQueue = new LinkedList<Integer>(); 
@@ -44,6 +49,7 @@ public class properMerging {
 		
 		for (i = 1; i < q.length; i++) {
 			pHelper[p[i]] = i; 
+			qHelper[q[i]] = i; 
 			pQueue.add(p[i]); 
 			qQueue.add(q[i]); 
 		}
@@ -53,20 +59,25 @@ public class properMerging {
 			if (pHelper[(int)pQueue.peek()] != 0) {
 				for (i = pHelper[(int)pQueue.peek()]; i <= pHelper[(int)qQueue.peek()]; i++) {
 					int pPopOut = (int) pQueue.poll(); 
-					//System.out.print(pPopOut + " "); 
+					
 					result.add(String.valueOf(pPopOut)); 
 					pHelper[pPopOut] = 0; 
-					 
+					
+					int qPopOut = qQueue.peek(); 
+					if (qQueue.peek() == pPopOut) {
+						result.add(String.valueOf(qQueue.poll()) + "' "); 
+						qHelper[qPopOut] = 0; 
+					}
+					
 				}
-				//System.out.print(qQueue.poll() + "' "); 
+				 
 			} 
+			if (qHelper[qQueue.peek()] != 0)
+				result.add((String)(String.valueOf(qQueue.poll())+ "' ")); 
 			
-			result.add((String)(String.valueOf(qQueue.poll())+ "' ")); 
-		
 		  }
 		  catch (NullPointerException e) {
 			  while (!qQueue.isEmpty()){
-				  // System.out.print(qQueue.poll() + "' "); 
 				  result.add((String)(String.valueOf(qQueue.poll()) +  "' ")); 
 			  }
 		  }
