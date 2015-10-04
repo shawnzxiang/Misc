@@ -15,7 +15,7 @@ public class properMerging {
 		
 		for (i = 1; i < p.length; i++){
 			
-			if (i <= qHelper[p[i]]) {
+			if (i >= qHelper[p[i]]) {
 				
 				System.out.print(p[i] + " " + p[i] + " "); 
 				qHelper[p[i]] = 0; 
