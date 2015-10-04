@@ -1,12 +1,10 @@
-package homework;
-
 public class properMerging {
 
 	public static void main(String[] args) {
 		int [] p = {0, 3, 2, 1}; 
 		int [] q = {0, 1, 2 ,3}; 
 
-		int [] qHelper = {0, 0, 0, 0};  
+		int [] qHelper = new int[p.length];  
 		
 		int i = 1; 
 		
