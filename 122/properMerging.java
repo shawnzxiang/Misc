@@ -3,10 +3,10 @@ package homework;
 public class properMerging {
 
 	public static void main(String[] args) {
-		int [] p = {0, 5, 2, 3, 4, 1}; 
-		int [] q = {0, 5, 3, 4, 2, 1}; 
+		int [] p = {0, 3, 2, 1}; 
+		int [] q = {0, 1, 2 ,3}; 
 
-		int [] qHelper = {0, 0, 0, 0, 0, 0};  
+		int [] qHelper = {0, 0, 0, 0};  
 		
 		int i = 1; 
 		
@@ -17,7 +17,7 @@ public class properMerging {
 			
 			if (i >= qHelper[p[i]]) {
 				
-				System.out.print(p[i] + " " + p[i] + " "); 
+				System.out.print(p[i] + " " + p[i] + "' "); 
 				qHelper[p[i]] = 0; 
 			} else {
 				System.out.print(p[i] + " "); 
@@ -26,7 +26,7 @@ public class properMerging {
 	
 		for (i = 1; i < qHelper.length; i++){
 			if (qHelper[i] != 0){
-				System.out.print(q[qHelper[i]] + " "); 
+				System.out.print(q[qHelper[i]] + "' "); 
 			}
 		}
 				
